@@ -1,0 +1,140 @@
+/**
+ * Static mock data for the finance dashboard.
+ * No API — this is all we need to learn the UI and state flow.
+ */
+
+// Every transaction has the same simple shape so lists and filters stay easy to follow.
+export const initialTransactions = [
+  {
+    id: "1",
+    date: "2026-01-05",
+    amount: 4200,
+    category: "Salary",
+    type: "income",
+    description: "Monthly salary",
+  },
+  {
+    id: "2",
+    date: "2026-01-08",
+    amount: 120,
+    category: "Transport",
+    type: "expense",
+    description: "Transit pass",
+  },
+  {
+    id: "3",
+    date: "2026-01-12",
+    amount: 340,
+    category: "Food",
+    type: "expense",
+    description: "Groceries",
+  },
+  {
+    id: "4",
+    date: "2026-01-18",
+    amount: 89,
+    category: "Entertainment",
+    type: "expense",
+    description: "Streaming",
+  },
+  {
+    id: "5",
+    date: "2026-01-22",
+    amount: 210,
+    category: "Bills",
+    type: "expense",
+    description: "Electricity",
+  },
+  {
+    id: "6",
+    date: "2026-02-01",
+    amount: 4200,
+    category: "Salary",
+    type: "income",
+    description: "Monthly salary",
+  },
+  {
+    id: "7",
+    date: "2026-02-06",
+    amount: 450,
+    category: "Food",
+    type: "expense",
+    description: "Groceries",
+  },
+  {
+    id: "8",
+    date: "2026-02-14",
+    amount: 1200,
+    category: "Shopping",
+    type: "expense",
+    description: "Laptop accessories",
+  },
+  {
+    id: "9",
+    date: "2026-02-20",
+    amount: 95,
+    category: "Health",
+    type: "expense",
+    description: "Pharmacy",
+  },
+  {
+    id: "10",
+    date: "2026-03-01",
+    amount: 4200,
+    category: "Salary",
+    type: "income",
+    description: "Monthly salary",
+  },
+  {
+    id: "11",
+    date: "2026-03-04",
+    amount: 380,
+    category: "Food",
+    type: "expense",
+    description: "Groceries",
+  },
+  {
+    id: "12",
+    date: "2026-03-10",
+    amount: 60,
+    category: "Transport",
+    type: "expense",
+    description: "Rides",
+  },
+  {
+    id: "13",
+    date: "2026-03-15",
+    amount: 175,
+    category: "Entertainment",
+    type: "expense",
+    description: "Concert tickets",
+  },
+  {
+    id: "14",
+    date: "2026-03-22",
+    amount: 140,
+    category: "Bills",
+    type: "expense",
+    description: "Internet",
+  },
+  {
+    id: "15",
+    date: "2026-03-28",
+    amount: 500,
+    category: "Other",
+    type: "income",
+    description: "Freelance",
+  },
+];
+
+// Used for dropdowns when adding or editing a transaction.
+export const ALL_CATEGORIES = [
+  "Salary",
+  "Food",
+  "Transport",
+  "Entertainment",
+  "Bills",
+  "Shopping",
+  "Health",
+  "Other",
+];

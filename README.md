@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Finance Dashboard (Next.js)
 
-## Getting Started
+A small **Finance Dashboard** built for learning: mock data only, **React Context** for state, and a **role switcher** (viewer vs admin) with no backend.
 
-First, run the development server:
+## Setup
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+1. Install dependencies (already done if you cloned with `node_modules`):
+
+   ```bash
+   npm install
+   ```
+
+2. Start the dev server:
+
+   ```bash
+   npm run dev
+   ```
+
+3. Open [http://localhost:3000](http://localhost:3000).
+
+4. Production build:
+
+   ```bash
+   npm run build
+   npm start
+   ```
+
+## Features
+
+- **Dashboard** (`/`): summary cards (balance, income, expenses), **balance over time** (line chart), **expenses by category** (bar chart), and an **insights** panel (highest category, month-to-month comparisons).
+- **Transactions** (`/transactions`): searchable table with **category** and **type** filters, **sort** by date or amount, and **viewer/admin** behavior.
+- **Roles (frontend only)**:
+  - **Viewer**: read-only — no add/edit/delete.
+  - **Admin**: can add, edit, and delete transactions.
+- **Persistence**: transactions, role, and light/dark preference are saved in **localStorage** (after the first client load).
+- **Dark mode**: toggle in the header (stored in localStorage).
+
+## Tech stack
+
+- [Next.js](https://nextjs.org/) (App Router)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Recharts](https://recharts.org/) for charts
+- React **Context API** + `useState` / `useMemo` (no heavy state libraries)
+
+## Approach (brief)
+
+- **`data/mockData.js`** — initial transaction list and category list.
+- **`context/FinanceContext.js`** — one provider holds transactions, filters, sort, role, and theme; exposes helpers like `addTransaction` and computed `stats`.
+- **`components/`** — small, focused UI pieces (nav, cards, charts, table, modal) so a junior can open one file at a time.
+- **Charts** are loaded from `components/DashboardCharts.js` using `next/dynamic` and `ssr: false` so Recharts can measure the browser container (Next.js requires this inside a Client Component).
+
+## Folder structure
+
+```
+app/
+  layout.js          # Root layout + FinanceProvider + NavBar
+  page.js            # Dashboard
+  transactions/
+    page.js          # Transactions list
+components/          # UI building blocks (includes DashboardCharts for client-only charts)
+context/
+  FinanceContext.js
+data/
+  mockData.js
+lib/
+  format.js          # Currency / date helpers
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## License
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Private / educational use.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# zorvyn

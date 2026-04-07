@@ -1,8 +1,18 @@
 @import "tailwindcss";
 
+/* Use class-based dark mode so our .dark toggle and Tailwind dark: variants stay in sync. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Light theme (default) */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f4f4f5;
+  --foreground: #18181b;
+}
+
+/* Dark theme — toggled by adding class "dark" on <html> (see FinanceContext). */
+.dark {
+  --background: #09090b;
+  --foreground: #fafafa;
 }
 
 @theme inline {
@@ -12,15 +22,23 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+body {
+  background: var(--background);
+  /* Text color comes from Tailwind on <body> in layout.js — avoids unlayered `color` overriding utilities. */
+}
+
+/* Gentle fade for main panels (optional polish). */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.animate-fade-up {
+  animation: fade-up 0.4s ease-out both;
 }
